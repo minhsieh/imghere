@@ -21,8 +21,8 @@ $app->get('/img' , function() use($app){
         $placeholder = new Placeholder();
         // echo $placeholder->getFont();
         // exit;
-        $placeholder->setWidth(500);
-        $placeholder->setHeight(200);
+        $placeholder->setWidth($width);
+        $placeholder->setHeight($height);
         if ($backgroundColor) $placeholder->setBackgroundColor($backgroundColor);
         if ($textColor) $placeholder->setTextColor($textColor);
         $placeholder->render();

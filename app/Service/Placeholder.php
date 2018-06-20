@@ -13,7 +13,7 @@ class Placeholder {
         $this->font            = BASE_PATH.'/fonts/Oswald-Regular.ttf';
         $this->maxHeight       = 2000;
         $this->maxWidth        = 2000;
-        $this->textColor       = '000000';
+        $this->textColor       = 'bdbdbd';
     }
 
     /**
