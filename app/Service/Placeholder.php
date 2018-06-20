@@ -2,7 +2,7 @@
 namespace App\Service;
 
 class Placeholder {
-    private $backgroundColor, $cache, $cacheDir, $expires, $font, $height, $maxHeight, $maxWidth, $textColor, $width;
+    private $backgroundColor, $cache, $cacheDir, $expires, $font, $height, $maxHeight, $maxWidth, $textColor, $width, $text;
 
     function __construct()
     {
@@ -208,6 +208,11 @@ class Placeholder {
         return $this->cacheDir;
     }
 
+    function setText($text)
+    {
+        $this->text = $text;
+    }
+
     /**
      * Set width of image to render
      * 
@@ -306,7 +311,7 @@ class Placeholder {
         // convert textColor hex to RGB values
         list($textR, $textG, $textB) = $this->hexToDec($this->textColor);
         $textColor = imagecolorallocate($image, $textR, $textG, $textB);
-        $text = $this->width . 'x' . $this->height;
+        $text = empty($this->text)? $this->width."x".$this->height : $this->text;
         imagefilledrectangle($image, 0, 0, $this->width, $this->height, $backgroundColor);
         $fontSize = 26;
         $textBoundingBox = imagettfbbox($fontSize, 0, $this->font, $text);
