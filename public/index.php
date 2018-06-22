@@ -7,11 +7,30 @@ require dirname(__DIR__)."/vendor/autoload.php";
 
 use MiniPHP\App;
 use App\Service\Placeholder;
+use App\Service\Resize;
+use \Redis;
 
 $app = new App;
 
 $app->get('/' , function() use($app){
     echo "This is index";
+});
+
+$app->get('/test',function() use ($app){
+    $redis = new Redis;
+    $redis->connect(REDIS_HOST,REDIS_PORT);
+    $redis->select(REDIS_DB);
+    
+    $rand = rand(0,892);
+
+    $key = $redis->lindex("unsplash_list",$rand);
+    $resize = new Resize(UNSPLASH_PATH.$key.".jpg");
+
+    $width           = isset($_GET['w']) ? trim($_GET['w']) : null;
+    $height          = isset($_GET['h']) ? trim($_GET['h']) : null;
+
+    $resize->resizeImage($width,$height,"crop");
+    $resize->showImage();
 });
 
 $app->get('/{size}' , function($size) use($app){
