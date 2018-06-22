@@ -7,18 +7,30 @@ How to use
 -----------
 Blank placeholder
 
-![imghere with 200x100](http://imghere.imin.tw/key?h=200&w=100)
+![imghere with 200x100](http://imghere.imin.tw/key?w=300&h=100)
+
 ```html
-<img src="http://imghere.imin.tw/test?h=200&w=100" alt="placeholder img">
+<img src="http://imghere.imin.tw/test?w=300&h=100" alt="placeholder img">
+```
+
+With custom text
+
+![imghere with custom text](http://imghere.imin.tw/key?w=250&h=120&text=Hello imghere)
+
+```html
+<img src="http://imghere.imin.tw/key?w=250&h=120&text=Hello imghere" alt="placeholder image">
 ```
 
 Random photo
-![imghere with 400x150](http://imghere.imin.tw/test?h=400&w=150)
+
+![imghere with 400x150](http://imghere.imin.tw/test?w=400&h=150)
+
 ```html
-<img src="http://imghere.imin.tw/test?h=400&w=150" alt="placeholder img">
+<img src="http://imghere.imin.tw/test?w=400&h=150" alt="placeholder img">
+```
 
-
-## ToDo
+ToDo
+------
 
 - Blur and greyscale effect
 - URLs pretty(ex: /?w=200&h=100   ----->  /200x100)
