@@ -7,26 +7,26 @@ How to use
 -----------
 Blank placeholder
 
-![imghere with 200x100](http://imghere.imin.tw/key?w=300&h=100)
+![imghere with 200x100](http://imghere.imin.tw/300x100)
 
 ```html
-<img src="http://imghere.imin.tw/test?w=300&h=100" alt="placeholder img">
+<img src="http://imghere.imin.tw/300x100" alt="placeholder img">
 ```
 
 With custom text
 
-![imghere with custom text](http://imghere.imin.tw/key?w=250&h=120&text=Hello%20imghere)
+![imghere with custom text](http://imghere.imin.tw/250x120?text=Hello%20imghere)
 
 ```html
-<img src="http://imghere.imin.tw/key?w=250&h=120&text=Hello%20imghere" alt="placeholder image">
+<img src="http://imghere.imin.tw/250x120?text=Hello%20imghere" alt="placeholder image">
 ```
 
 Random photo
 
-![imghere with 400x150](http://imghere.imin.tw/test?w=400&h=150)
+![imghere with 400x150](http://imghere.imin.tw/photo/400x150)
 
 ```html
-<img src="http://imghere.imin.tw/test?w=400&h=150" alt="placeholder img">
+<img src="http://imghere.imin.tw/photo/400x150" alt="placeholder img">
 ```
 
 ToDo
