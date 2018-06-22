@@ -15,10 +15,10 @@ Blank placeholder
 
 With custom text
 
-![imghere with custom text](http://imghere.imin.tw/key?w=250&h=120&text=Hello imghere)
+![imghere with custom text](http://imghere.imin.tw/key?w=250&h=120&text=Hello%20imghere)
 
 ```html
-<img src="http://imghere.imin.tw/key?w=250&h=120&text=Hello imghere" alt="placeholder image">
+<img src="http://imghere.imin.tw/key?w=250&h=120&text=Hello%20imghere" alt="placeholder image">
 ```
 
 Random photo
