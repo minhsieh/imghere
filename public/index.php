@@ -26,7 +26,7 @@ $app->get('/photo/{size}',function($size) use ($app){
     $key = $redis->lindex("unsplash_list",$rand);
     $resize = new Resize(UNSPLASH_PATH.$key.".jpg");
 
-    preg_match("/(\d+)x(\d+)/",$size , $size);
+    preg_match("/(\d+)[x*X-]{1}(\d+)/",$size , $size);
     // Get variables from $_GET
     $width           = isset($_GET['w']) ? trim($_GET['w']) : $size[1];
     $height          = isset($_GET['h']) ? trim($_GET['h']) : $size[2];
@@ -36,7 +36,7 @@ $app->get('/photo/{size}',function($size) use ($app){
 });
 
 $app->get('/{size}' , function($size) use($app){
-    preg_match("/(\d+)x(\d+)/",$size , $size);
+    preg_match("/(\d+)[x*X-]{1}(\d+)/",$size , $size);
 
     // Get variables from $_GET
     $width           = isset($_GET['w']) ? trim($_GET['w']) : $size[1];
