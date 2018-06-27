@@ -5,34 +5,41 @@ error_reporting(E_ALL);
 require dirname(__DIR__)."/config/config.php";
 require dirname(__DIR__)."/vendor/autoload.php";
 
-use MiniPHP\App;
-use App\Service\Placeholder;
-use App\Service\Resize;
+use \MiniPHP\App;
+use \App\Service\Placeholder;
+use \App\Service\Resize;
 use \Redis;
 
 $app = new App;
+$app->setViewPath(BASE_PATH."/views/");
 
 $app->get('/' , function() use($app){
-    echo "This is index";
+    return $app->response("index.php", ['foo' => 'bar']);
 });
 
 $app->get('/photo/{size}',function($size) use ($app){
-    $redis = new Redis;
-    $redis->connect(REDIS_HOST,REDIS_PORT);
-    $redis->select(REDIS_DB);
-    
-    $rand = rand(0,892);
+    try{
+        $redis = new Redis;
+        $redis->connect(REDIS_HOST,REDIS_PORT);
+        $redis->select(REDIS_DB);
 
-    $key = $redis->lindex("unsplash_list",$rand);
-    $resize = new Resize(UNSPLASH_PATH.$key.".jpg");
+        $rand = rand(0,892);
 
-    preg_match("/(\d+)[x*X-]{1}(\d+)/",$size , $size);
-    // Get variables from $_GET
-    $width           = isset($_GET['w']) ? trim($_GET['w']) : $size[1];
-    $height          = isset($_GET['h']) ? trim($_GET['h']) : $size[2];
+        $key = $redis->lindex("unsplash_list",$rand);
+        $resize = new Resize(UNSPLASH_PATH.$key.".jpg");
 
-    $resize->resizeImage($width,$height,"crop");
-    $resize->showImage();
+        if(preg_match("/(\d+)[x*X-]{1}(\d+)/",$size , $size) === false){
+            throw new Exception('size argument is not match.');
+        }
+        // Get variables from $_GET
+        $width           = isset($_GET['w']) ? trim($_GET['w']) : $size[1];
+        $height          = isset($_GET['h']) ? trim($_GET['h']) : $size[2];
+
+        $resize->resizeImage($width,$height,"crop");
+        $resize->showImage();
+    }catch(Exception $ex){
+        
+    }
 });
 
 $app->get('/{size}' , function($size) use($app){
