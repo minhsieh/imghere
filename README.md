@@ -21,16 +21,8 @@ With custom text
 <img src="http://imghere.imin.tw/250x120?text=Hello%20imghere" alt="placeholder image">
 ```
 
-Random photo
-
-![imghere with 400x150](http://imghere.imin.tw/photo/400x150)
-
-```html
-<img src="http://imghere.imin.tw/photo/400x150" alt="placeholder img">
-```
 
 ToDo
 ------
 
 - Blur and greyscale effect
-- URLs pretty(ex: /?w=200&h=100   ----->  /200x100)

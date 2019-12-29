@@ -3,3 +3,4 @@ composer.lock
 logs
 config/config.php
 cache/*
+.vscode
